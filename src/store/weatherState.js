@@ -1,47 +1,18 @@
 export default {
     city: {
         name: '',
-        country: ''
+        country: '',
+        felt: null, // ощущение
     },
     parameters: {
         temperature: null,
         humidity: null, // влажность
-        feels_like: null, // ощущение
+        visibility: null,
         speed: null,
         sunrise: null,
-        sunset: null
+        sunset: null,
     },
-    parametersWeather: [
-        {
-            name: 'temperature',
-            value: 30,
-            img: 'cloud.png'
-        },
-        {
-            name: 'humidity',
-            value: 14,
-            img: 'humidity.png'
-        },
-        {
-            name:'feels_like',
-            value: 45,
-            img: ''
-        },
-        {
-            name:'speed',
-            value: 2,
-            img: 'wind.png'
-        },
-        {
-            name:'sunrise',
-            value: 123125,
-            img: 'sunrise.png'
-        },
-        {
-            name:'sunset',
-            value: 123521,
-            img: 'sunset.png'
-        }
-
+    signList: [
+        '°C', '%', '°C', 'm/s'
     ]
 }
