@@ -1,10 +1,10 @@
 <template>
   <div class="city-card">
     <header class="header">
-      <h3>{{ city.name || 'Sin City' }}, {{ city.country || '' }}</h3>
+      <h3 class="title">{{ city.name || 'Sin City' }}, {{ city.country || '' }}</h3>
     </header>
     <section class="main">
-      <img src="../assets/cloud.png" height="40" width="70"/>
+      <img class="city-img" src="../assets/cloud.png"/>
     </section>
     <footer class="footer">
       <h1> {{ temperature || '~30' }}°C</h1>
@@ -48,5 +48,15 @@ export default {
   text-decoration: none;
   font-size: 12px;
   color: green;
+}
+.header {
+  width: 145px;
+}
+.city-img {
+  height: 54px;
+  width: 90px;
+}
+.title{
+  font-family: 'Roboto', sans-serif;
 }
 </style>

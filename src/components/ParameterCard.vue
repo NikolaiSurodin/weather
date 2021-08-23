@@ -2,15 +2,17 @@
   <div class="wrapper">
     <div class="info">
       <slot class="icon-picture" name="img"></slot>
-      <p>
-        <span><slot name="parameter"></slot></span>
-      </p>
     </div>
-    <div class="info">
+
+    <div class="info-values">
       <p>
-        <slot name="value"></slot>
-        <slot name="sign"></slot>
+        <slot name="parameter"></slot>
       </p>
+      <p class="value">
+        <slot name="value"></slot>
+      </p>
+      <slot name="sign"></slot>
+
     </div>
   </div>
 </template>
@@ -31,12 +33,13 @@ export default {
 
 .wrapper {
   width: 170px;
-  justify-content: space-around;
   border: 1px solid transparent;
   height: 102px;
   border-radius: 5px;
   background-color: #ffff;
   margin: 6px 7px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .info {
@@ -44,7 +47,20 @@ export default {
   line-height: 5px;
   text-align: end;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 12px;
+  justify-content: space-around;
+}
 
+.info-values {
+  position: inherit;
+  flex-direction: column;
+  line-height: 0.1;
+  display: inline-flex;
+  text-align: end;
+}
+
+.value {
+  font-weight: bold;
+  font-size: 20px;
 }
 </style>

@@ -68,16 +68,15 @@ export default {
   },
   beforeMount() {
     this.fetchWeatherInfo()
-        .then( () => {} )
+        .then( () => {
+        } )
         .catch( err => console.log( err ) )
   },
   mounted() {
+    let date = new Date().getDay()
+    let options = { weekday: 'long' }
     setInterval( () => {
-      this.date = new Date().toLocaleDateString( 'en-EN', {
-        "day": "numeric",
-        "month": "long",
-        "year": "numeric"
-      } )
+      this.date = new Intl.DateTimeFormat( 'en-US', options ).format( date ) + ',  ' + new Date().toLocaleTimeString( 'ru-RU' )
     } )
   }
 
@@ -89,9 +88,6 @@ export default {
 .weather-widget {
   display: flex;
   width: 820px;
-  padding: 7px 0;
-  border: 1px solid transparent;
-  border-radius: 5px;
 }
 
 .city-card {
@@ -135,8 +131,8 @@ export default {
 }
 
 .img {
-  height: 40px;
-  width: 50px;
+  height: 77px;
+  width: 74px;
 }
 
 .icon-picture {
