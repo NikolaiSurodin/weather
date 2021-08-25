@@ -20,10 +20,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #eaeaea;
   display: flex;
   justify-content: center;
-
   align-items: center;
 }
 </style>
