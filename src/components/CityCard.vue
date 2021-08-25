@@ -5,9 +5,10 @@
     </header>
     <section class="main">
       <img class="city-img" src="../assets/cloud.png"/>
-    </section>
-    <footer class="footer">
       <h1> {{ temperature || '~30' }}°C</h1>
+    </section>
+
+    <footer class="footer">
       <h4> Feels like: {{ feelLike }}°C</h4>
       <a target="_blank"
          href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=30&lon=-20&zoom=5"
@@ -42,6 +43,7 @@ export default {
 .city-card {
   display: flex;
   flex-direction: column;
+  height: 400px;
 }
 
 .link {
@@ -49,14 +51,25 @@ export default {
   font-size: 12px;
   color: green;
 }
+
 .header {
   width: 145px;
 }
+
 .city-img {
   height: 54px;
   width: 90px;
 }
-.title{
+
+.title {
   font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+}
+.footer{
+  position: relative;
+  top: 68px;
 }
 </style>

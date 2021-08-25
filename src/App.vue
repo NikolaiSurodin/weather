@@ -23,10 +23,7 @@ export default {
   background-color: #eaeaea;
   display: flex;
   justify-content: center;
-  margin: 30px 50px;
-  border-radius: 10px;
-  width: 68%;
-  position: absolute;
-  flex-wrap: nowrap;
+
+  align-items: center;
 }
 </style>
