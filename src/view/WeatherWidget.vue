@@ -1,5 +1,5 @@
 <template>
-  <div class="al">
+  <div class="wrapper-widget">
 
     <div v-if="error">
       <error-page :error="error"
@@ -25,12 +25,13 @@
                           :value="parameter"
           >
             <template v-slot:img>
-              <img class="img" v-if="key === 'temperature'" src="../assets/temperature.svg">
-              <img class="img" v-if="key === 'humidity'" src="../assets/humidity.svg">
-              <img class="img" v-if="key === 'visibility'" src="../assets/visibility.svg">
-              <img class="img" v-if="key === 'speed'" src="../assets/wind.svg">
-              <img class="img" v-if="key === 'sunset'" src="../assets/sunset.svg">
-              <img class="img" v-if="key === 'sunrise'" src="../assets/sunrise.svg">
+              <img class="img" v-if="key === 'temperature'" src="../images/temperature.svg">
+              <img class="img" v-if="key === 'humidity'" src="../images/humidity-icon.png">
+              <img class="img" v-if="key === 'visibility'" src="../images/visibility.svg">
+              <img class="img" v-if="key === 'speed'" src="../images/wind.svg">
+              <img class="img" v-if="key === 'sunset'" src="../images/sunset.svg">
+              <img class="img" v-if="key === 'sunrise'" src="../images/sunrise.svg">
+              <img class="img" v-if="key === 'direction'" src="../images/compass.svg">
             </template>
 
             <template v-slot:parameter>{{ key }}</template>
@@ -46,9 +47,18 @@
 
           </parameter-card>
         </div>
+        <div class="footer">
+          <a target="_blank"
+             href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=30&lon=-20&zoom=5"
+             class="link">Metric system</a>
+          <a target="_blank"
+             href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=30&lon=-20&zoom=5"
+             class="link right-link">Imperial system</a>
+        </div>
       </div>
-      <img class="reload-icon" src="../assets/reload.svg" alt="reload" @click="update">
+      <img class="reload-icon" src="../images/reload.svg" alt="reload" @click="update">
     </div>
+
   </div>
 </template>
 
@@ -83,8 +93,7 @@ export default {
   computed: {
     ...mapGetters( [
       'getInfoAboutCity',
-      'getParameters',
-      'getSignList'
+      'getParameters'
     ] )
   },
   beforeMount() {
@@ -114,11 +123,12 @@ export default {
 }
 
 .city-card {
-  padding: 0 30px;
   background-color: #fff;
   border: 1px solid transparent;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
+  padding: 0 15px;
+
 }
 
 .parameter-card {
@@ -132,13 +142,18 @@ export default {
   flex-direction: row;
   justify-content: space-between;
 }
+.header p {
+  margin-left: 6px;
+}
 
 .input {
   height: 20px;
   position: relative;
-  bottom: -21px;
+  bottom: -35px;
   border: none;
   text-align: right;
+  padding: 2px 0;
+  margin: 0 10px;
 }
 
 .input:focus {
@@ -156,14 +171,15 @@ export default {
 .img {
   height: 77px;
   width: 74px;
+  margin: 34px 0;
 }
 
-.al {
-  background-color: #e4e4e4;
+.wrapper-widget {
+  background-color: #f7f7f7;;
   border-radius: 10px;
   position: relative;
-  width: 857px;
-  box-shadow: 5px 1px 25px #8483f344;
+  width: 840px;
+  box-shadow:  -3px 10px 25px #8483f344;
 }
 
 .right-menu {
@@ -172,6 +188,24 @@ export default {
 
 .header p {
   font-size: 19px;
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 12px;
+  color: green;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 18px;
+}
+
+.right-link {
+  margin-left: 15px;
+  color: black;
   font-weight: bold;
 }
 </style>

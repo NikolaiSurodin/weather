@@ -32,9 +32,9 @@ export default {
 }
 
 .wrapper {
-  width: 170px;
+  width: 173px;
   border: 1px solid transparent;
-  height: 102px;
+  height: 111px;
   border-radius: 5px;
   background-color: #ffff;
   margin: 6px 7px;
@@ -55,7 +55,6 @@ export default {
   position: inherit;
   flex-direction: column;
   line-height: 0.1;
-  display: inline-flex;
   text-align: end;
 }
 

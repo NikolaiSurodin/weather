@@ -2,17 +2,15 @@
   <div class="city-card">
     <header class="header">
       <h3 class="title">{{ city.name || 'Sin City' }}, {{ city.country || '' }}</h3>
+      <p>{{ city.description }}</p>
     </header>
     <section class="main">
-      <img class="city-img" src="../assets/cloud.png"/>
+      <img class="city-img" src="../images/cloud.png"/>
       <h1> {{ temperature || '~30' }}°C</h1>
     </section>
 
     <footer class="footer">
       <h4> Feels like: {{ feelLike }}°C</h4>
-      <a target="_blank"
-         href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=30&lon=-20&zoom=5"
-         class="link">Metric system</a>
     </footer>
   </div>
 </template>
@@ -30,7 +28,7 @@ export default {
   },
   computed: {
     temperature() {
-      return this.parameter.temperature?.toFixed( 0 )
+      return this.city.temperature?.toFixed( 0 )
     },
     feelLike() {
       return this.city.felt?.toFixed( 1 )
@@ -40,36 +38,42 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap');
 .city-card {
   display: flex;
   flex-direction: column;
   height: 400px;
+  padding: 0px 15px;
 }
-
-.link {
-  text-decoration: none;
-  font-size: 12px;
-  color: green;
-}
-
 .header {
-  width: 145px;
+  width: 178px;
+  line-height: 0.5;
 }
 
 .city-img {
-  height: 54px;
-  width: 90px;
+  height: 83px;
+  width: 136px;
+  padding: 36px 0;
 }
 
 .title {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 23px;
+  font-weight: bold;
 }
 
 h1 {
   font-size: 40px;
-}
-.footer{
+  display: block;
   position: relative;
-  top: 68px;
+  top: 28px;
+}
+
+.footer {
+  position: relative;
+  top: -12px;
+}
+.footer h4 {
+  font-size: 11px;
 }
 </style>

@@ -3,7 +3,7 @@
   <div class="wrap">
     <div class="popup">
       <header class="header">
-        <img src="../assets/info.svg">
+        <img src="../images/info.svg">
       </header>
       <section class="section">
         {{ error }}
