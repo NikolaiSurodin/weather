@@ -5,13 +5,13 @@
     </div>
 
     <div class="info-values">
-      <p>
+      <p class="info-values-name">
         <slot name="parameter"></slot>
       </p>
       <p class="value">
         <slot name="value"></slot>
       </p>
-      <slot name="sign"></slot>
+      <slot class="sign" name="sign"></slot>
 
     </div>
   </div>
@@ -32,10 +32,10 @@ export default {
 }
 
 .wrapper {
-  width: 173px;
+  width: 180px;
   border: 1px solid transparent;
   height: 111px;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #ffff;
   margin: 6px 7px;
   display: flex;
@@ -49,6 +49,7 @@ export default {
   font-weight: bold;
   font-size: 12px;
   justify-content: space-around;
+  margin: 0 11px;
 }
 
 .info-values {
@@ -56,10 +57,14 @@ export default {
   flex-direction: column;
   line-height: 0.1;
   text-align: end;
+  margin: 5px;
 }
-
+.sign {
+  font-weight: 100;
+  font-size: 13px;
+}
 .value {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 21px;
 }
 </style>

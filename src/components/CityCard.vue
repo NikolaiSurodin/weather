@@ -2,10 +2,11 @@
   <div class="city-card">
     <header class="header">
       <h3 class="title">{{ city.name || 'Sin City' }}, {{ city.country || '' }}</h3>
-      <p>{{ city.description }}</p>
+      <p>{{ city.Description }}</p>
+
     </header>
     <section class="main">
-      <img class="city-img" src="../images/cloud.png"/>
+      <img :src="city.icon" class="city-img">
       <h1> {{ temperature || '~30' }}°C</h1>
     </section>
 
@@ -38,26 +39,27 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap');
+
 .city-card {
   display: flex;
   flex-direction: column;
   height: 400px;
-  padding: 0px 15px;
+  padding: 0 15px;
 }
 .header {
   width: 178px;
   line-height: 0.5;
 }
+.header p {
+  font-family: 'Nunito', sans-serif;
+}
 
 .city-img {
-  height: 83px;
-  width: 136px;
   padding: 36px 0;
 }
 
 .title {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 23px;
   font-weight: bold;
 }
@@ -67,6 +69,7 @@ h1 {
   display: block;
   position: relative;
   top: 28px;
+  font-family: 'Nunito', sans-serif;
 }
 
 .footer {
@@ -75,5 +78,6 @@ h1 {
 }
 .footer h4 {
   font-size: 11px;
+  font-weight: 100;
 }
 </style>

@@ -13,6 +13,7 @@ export default {
                     resolve()
                 } )
                 .catch(err => reject(err))
+
         } )
     }
 }

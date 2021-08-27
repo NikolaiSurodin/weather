@@ -16,7 +16,7 @@
       <div class="right-menu">
         <div class="header">
           <p>{{ date }}</p>
-          <input class="input" placeholder="City..">
+          <input class="input">
         </div>
 
         <div class="parameter-card">
@@ -26,12 +26,12 @@
           >
             <template v-slot:img>
               <img class="img" v-if="key === 'temperature'" src="../images/temperature.svg">
-              <img class="img" v-if="key === 'humidity'" src="../images/humidity-icon.png">
-              <img class="img" v-if="key === 'visibility'" src="../images/visibility.svg">
-              <img class="img" v-if="key === 'speed'" src="../images/wind.svg">
-              <img class="img" v-if="key === 'sunset'" src="../images/sunset.svg">
-              <img class="img" v-if="key === 'sunrise'" src="../images/sunrise.svg">
-              <img class="img" v-if="key === 'direction'" src="../images/compass.svg">
+              <img class="img" v-if="key === 'Humidity'" src="../images/humidity-icon.png">
+              <img class="img" v-if="key === 'Visibility'" src="../images/visibility.svg">
+              <img class="img" v-if="key === 'Speed'" src="../images/wind.svg">
+              <img class="img" v-if="key === 'Sunset'" src="../images/sunset.svg">
+              <img class="img" v-if="key === 'Sunrise'" src="../images/sunrise.svg">
+              <img class="img" v-if="key === 'Direction'" src="../images/compass.svg">
             </template>
 
             <template v-slot:parameter>{{ key }}</template>
@@ -40,23 +40,14 @@
 
             <template v-slot:sign>
               <p v-if="key === 'temperature'">°C</p>
-              <p v-if="key === 'humidity'">%</p>
-              <p v-if="key === 'visibility'">m</p>
-              <p v-if="key === 'speed'">m/s</p>
+              <p v-if="key === 'Humidity'">%</p>
+              <p v-if="key === 'Visibility'">m</p>
+              <p v-if="key === 'Speed'">m/s</p>
             </template>
 
           </parameter-card>
         </div>
-        <div class="footer">
-          <a target="_blank"
-             href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=30&lon=-20&zoom=5"
-             class="link">Metric system</a>
-          <a target="_blank"
-             href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=30&lon=-20&zoom=5"
-             class="link right-link">Imperial system</a>
-        </div>
       </div>
-      <img class="reload-icon" src="../images/reload.svg" alt="reload" @click="update">
     </div>
 
   </div>
@@ -94,7 +85,19 @@ export default {
     ...mapGetters( [
       'getInfoAboutCity',
       'getParameters'
-    ] )
+    ] ),
+    wind() {
+      let degrees = this.getParameters.Direction
+      let directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+
+      degrees = degrees * 8 / 360;
+
+      degrees = Math.round(degrees, 0);
+
+      degrees = (degrees + 8) % 8
+
+      return directions[degrees]
+    }
   },
   beforeMount() {
     this.fetchWeatherInfo()
@@ -108,7 +111,7 @@ export default {
     let date = new Date().getDay()
     let time = moment().format( "HH:mm" )
     let options = { weekday: 'long' }
-    this.date = new Intl.DateTimeFormat( 'en-US', options ).format( date ) + ',  ' + time
+    this.date = new Intl.DateTimeFormat( 'en-US', options ).format( date ) + ',' + time
   }
 
 
@@ -147,31 +150,18 @@ export default {
 }
 
 .input {
-  height: 20px;
+  height: 27px;
+  width: 178px;
   position: relative;
   bottom: -35px;
   border: none;
   text-align: right;
-  padding: 2px 0;
-  margin: 0 10px;
+  margin: 0 8px;
 }
-
-.input:focus {
-  outline: none;
-}
-
-.reload-icon {
-  height: 20px;
-}
-
-.reload-icon:hover {
-  cursor: pointer;
-}
-
 .img {
-  height: 77px;
-  width: 74px;
-  margin: 34px 0;
+  height: 80px;
+  width: 83px;
+  margin: 22px 0px;
 }
 
 .wrapper-widget {
@@ -191,21 +181,4 @@ export default {
   font-weight: bold;
 }
 
-.link {
-  text-decoration: none;
-  font-size: 12px;
-  color: green;
-}
-
-.footer {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0 18px;
-}
-
-.right-link {
-  margin-left: 15px;
-  color: black;
-  font-weight: bold;
-}
 </style>

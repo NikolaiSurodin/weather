@@ -4,14 +4,15 @@ export default {
         country: '',
         felt: null, // ощущение
         temperature: null,
-        description:''
+        description:'',
+        icon:''
     },
     parameters: {
-        humidity: null, // влажность
-        speed: null,
-        direction: 'WSW',
-        visibility: null,
-        sunrise: null,
-        sunset: null,
+        Humidity: null, // влажность
+        Speed: null,
+        Direction: null,
+        Visibility: null,
+        Sunrise: null,
+        Sunset: null,
     }
 }
