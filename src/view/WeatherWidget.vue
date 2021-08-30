@@ -25,13 +25,13 @@
                           :value="parameter"
           >
             <template v-slot:img>
-              <img class="img" v-if="key === 'temperature'" src="../images/temperature.svg">
-              <img class="img" v-if="key === 'Humidity'" src="../images/humidity-icon.png">
-              <img class="img" v-if="key === 'Visibility'" src="../images/visibility.svg">
-              <img class="img" v-if="key === 'Speed'" src="../images/wind.svg">
-              <img class="img" v-if="key === 'Sunset'" src="../images/sunset.svg">
-              <img class="img" v-if="key === 'Sunrise'" src="../images/sunrise.svg">
-              <img class="img" v-if="key === 'Direction'" src="../images/compass.svg">
+              <img class="img" v-if="key === 'temperature'" src="../images/temperature.svg" alt="logo">
+              <img class="img" v-if="key === 'Humidity'" src="../images/humidity-icon.png" alt="logo">
+              <img class="img" v-if="key === 'Visibility'" src="../images/visibility.svg" alt="logo">
+              <img class="img" v-if="key === 'Speed'" src="../images/wind.svg" alt="logo">
+              <img class="img" v-if="key === 'Sunset'" src="../images/sunset.svg" alt="logo">
+              <img class="img" v-if="key === 'Sunrise'" src="../images/sunrise.svg" alt="logo">
+              <img class="img" v-if="key === 'Direction'" src="../images/compass.svg" alt="logo">
             </template>
 
             <template v-slot:parameter>{{ key }}</template>
@@ -41,7 +41,7 @@
             <template v-slot:sign>
               <p v-if="key === 'temperature'">°C</p>
               <p v-if="key === 'Humidity'">%</p>
-              <p v-if="key === 'Visibility'">m</p>
+              <p v-if="key === 'Visibility'">km</p>
               <p v-if="key === 'Speed'">m/s</p>
             </template>
 
@@ -85,19 +85,7 @@ export default {
     ...mapGetters( [
       'getInfoAboutCity',
       'getParameters'
-    ] ),
-    wind() {
-      let degrees = this.getParameters.Direction
-      let directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
-
-      degrees = degrees * 8 / 360;
-
-      degrees = Math.round(degrees, 0);
-
-      degrees = (degrees + 8) % 8
-
-      return directions[degrees]
-    }
+    ] )
   },
   beforeMount() {
     this.fetchWeatherInfo()
@@ -145,6 +133,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
 }
+
 .header p {
   margin-left: 6px;
 }
@@ -158,6 +147,7 @@ export default {
   text-align: right;
   margin: 0 8px;
 }
+
 .img {
   height: 80px;
   width: 83px;
@@ -169,7 +159,7 @@ export default {
   border-radius: 10px;
   position: relative;
   width: 840px;
-  box-shadow:  -3px 10px 25px #8483f344;
+  box-shadow: -3px 10px 25px #8483f344;
 }
 
 .right-menu {
